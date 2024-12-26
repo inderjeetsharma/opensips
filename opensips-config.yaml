@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: opensips-config
+  namespace: opensips
+data:
+  opensips.cfg: |
+    # Your OpenSIPS configuration here
+    # Example:
+    modparam("proto_tcp", "tcp_keepalive", "yes")
+    listen=udp:0.0.0.0:5060
