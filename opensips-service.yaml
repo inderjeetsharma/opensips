@@ -10,4 +10,4 @@ spec:
     - protocol: UDP
       port: 5060
       targetPort: 5060
-  type: ClusterIP
+  type: ClusterIP  # Or change to NodePort if you want to access it outside the cluster
