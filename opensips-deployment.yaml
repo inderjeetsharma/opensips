@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: opensips-deployment
+  name: opensips
   namespace: opensips
 spec:
   replicas: 1
@@ -14,15 +14,15 @@ spec:
         app: opensips
     spec:
       containers:
-      - name: opensips
-        image: opensips/opensips:latest  # Replace with the OpenSIPS version you want
-        ports:
-        - containerPort: 5060  # SIP default port
-        volumeMounts:
-        - name: opensips-config
-          mountPath: /etc/opensips/opensips.cfg  # Mount OpenSIPS config file
-          subPath: opensips.cfg
+        - name: opensips
+          image: opensips/opensips:latest
+          ports:
+            - containerPort: 5060
+          volumeMounts:
+            - name: opensips-config-volume
+              mountPath: /etc/opensips
+              subPath: opensips.cfg
       volumes:
-      - name: opensips-config
-        configMap:
-          name: opensips-config  # Reference the config map
+        - name: opensips-config-volume
+          configMap:
+            name: opensips-config
