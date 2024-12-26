@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: opensips-pv
+  namespace: opensips
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data/opensips-logs  # Local path where logs will be stored
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: opensips-pvc
+  namespace: opensips
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
