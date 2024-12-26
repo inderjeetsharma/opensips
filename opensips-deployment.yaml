@@ -20,8 +20,8 @@ spec:
             - containerPort: 5060
           volumeMounts:
             - name: opensips-config-volume
-              mountPath: /etc/opensips
-              subPath: opensips.cfg
+              mountPath: /etc/opensips/opensips.cfg  # Mount the specific file path
+              subPath: opensips.cfg  # Ensure subPath is used for a single file mount
       volumes:
         - name: opensips-config-volume
           configMap:
